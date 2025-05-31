@@ -87,6 +87,48 @@ def load_distance_matrix(filename: str) -> np.ndarray:
         return None
 
 
+def visualize_contact_matrix(contact_matrix: np.ndarray, filename: str = "contact_matrix.png"):
+    """
+    Create visualization of the contact matrix.
+    
+    Parameters:
+    -----------
+    contact_matrix : np.ndarray
+        Binary contact matrix
+    filename : str
+        Output filename for the plot
+    """
+    # Check if matrix is too large for visualization
+    if contact_matrix.shape[0] > 1000:
+        print(f"Warning: Large matrix ({contact_matrix.shape[0]}x{contact_matrix.shape[0]}), visualization might be slow")
+    
+    plt.figure(figsize=(10, 8))
+    plt.imshow(contact_matrix, cmap='Blues', interpolation='nearest')
+    plt.colorbar(label='Contact (1) / No Contact (0)')
+    plt.title('Protein Contact Matrix (7Å threshold)')
+    plt.xlabel('Residue Index')
+    plt.ylabel('Residue Index')
+    plt.tight_layout()
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    plt.show()
+    print(f"Contact matrix visualization saved to: {filename}")
+
+
+def save_contact_matrix(contact_matrix: np.ndarray, filename: str = "contact_matrix.csv"):
+    """
+    Save contact matrix to CSV file.
+    
+    Parameters:
+    -----------
+    contact_matrix : np.ndarray
+        Binary contact matrix
+    filename : str
+        Output filename
+    """
+    np.savetxt(filename, contact_matrix, delimiter=",", fmt='%d')
+    print(f"Contact matrix saved to: {filename}")
+
+
 if __name__ == "__main__":
     # Load distance matrix (assuming it was created by distance_calculator.py)
     print("Loading distance matrix...")
@@ -98,12 +140,22 @@ if __name__ == "__main__":
     
     # Create contact matrix with 7 Angstrom threshold
     print("Creating contact matrix with 7Å threshold...")
-    # contact_matrix = create_contact_matrix(distance_matrix, threshold=9.0)
     contact_matrix = create_contact_matrix(distance_matrix, threshold=7.0)
     
     # Analyze the contact matrix
     stats = analyze_contact_matrix(contact_matrix)
     
-    print(f"\nContact matrix creation completed!")
-    print(f"Matrix dimensions: {contact_matrix.shape}")
-    print(f"Ready for visualization and saving in next step...")
+    # Save contact matrix
+    save_contact_matrix(contact_matrix, "contact_matrix_6vsb.csv")
+    
+    # Create visualization
+    visualize_contact_matrix(contact_matrix, "contact_matrix_6vsb.png")
+    
+    # Show some example contacts
+    print("\nExample contacts (first 10 residues):")
+    for i in range(min(10, contact_matrix.shape[0])):
+        contacts = np.where(contact_matrix[i] == 1)[0]
+        if len(contacts) > 0:
+            print(f"Residue {i}: contacts with residues {contacts[:10]}")  # Show first 10 contacts
+        # else:
+        #     print(f"Residue {i}: no contacts found")  # debugging isolated residues
