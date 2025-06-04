@@ -37,6 +37,8 @@ def extract_ca_coordinates(pdb_file: str) -> np.ndarray:
 
 # Example usage — runs only if the file is executed directly
 if __name__ == "__main__":
+    import os
+    
     # The downloaded COVID spike protein file
     pdb_path = "pdb6vsb.ent"
 
@@ -47,13 +49,12 @@ if __name__ == "__main__":
     print(f"Extracted {len(ca_array)} alpha carbon atoms.")
     print("First 5 coordinates:")
     print(ca_array[:5])
-import os
 
-# Save coordinates to a CSV file
-output_file = "ca_coordinates_6vsb.csv"
+    # Save coordinates to a CSV file
+    output_file = "ca_coordinates_6vsb.csv"
 
-# Save the array with comma-separated values and a header
-np.savetxt(output_file, ca_array, delimiter=",", header="x,y,z", comments='')
+    # Save the array with comma-separated values and a header
+    np.savetxt(output_file, ca_array, delimiter=",", header="x,y,z", comments='')
 
-# Confirm in terminal
-print(f"Coordinates saved to: {os.path.abspath(output_file)}")
+    # Confirm in terminal
+    print(f"Coordinates saved to: {os.path.abspath(output_file)}")
