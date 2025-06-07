@@ -222,25 +222,6 @@ contact_matrix = np.loadtxt("results/contact_matrix_6vsb.csv", delimiter=",", dt
 link_results = analyze_link_importance(original_coords, contact_matrix, max_links=500)
 print(f"Top critical contact: {link_results.iloc[0]['contact']}")
 
-# Configuration (Read Very careful)
-
-Create a `config.py` file to establish default parameters:
-
-```python
-# Default configuration
-DEFAULT_PDB_ID = "6vsb"
-DEFAULT_OUTPUT_DIR = "results"
-DEFAULT_CONTACT_THRESHOLD = 7.0
-DEFAULT_MAX_LINKS_TEST = 1000
-
-# Visualization settings
-FIGURE_DPI = 300
-FIGURE_FORMAT = "png"
-
-# Analysis settings
-EIGENVALUE_TOLERANCE = 1e-10
-PROCRUSTES_SCALING = True
-```
 
 ## Troubleshooting
 
