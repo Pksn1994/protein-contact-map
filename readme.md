@@ -223,32 +223,6 @@ link_results = analyze_link_importance(original_coords, contact_matrix, max_link
 print(f"Top critical contact: {link_results.iloc[0]['contact']}")
 
 
-## Troubleshooting
-
-### Common Issues
-
-1. **"PDB file not found"**
-   - Ensure internet connectivity for automatic download
-   - Verify PDB ID is valid (4 characters)
-
-2. **"Memory error for large proteins"**
-   - Reduce `max_links_test` parameter
-   - Use a residue subset instead
-
-3. **"Graph disconnected" warning messages**
-   - Increase contact threshold
-- Confirm missing residues in protein
-
-4. **Poor reconstruction quality (high RMSD)**
-   - Verify contact threshold value correct
-   - Confirm structural domains or flexibility
-
-### Optimizing Performance
-
-- Use smaller `max_links_test` for initial inspection
-- Run link analysis in a computing cluster for big protein
-- Think about parallel processing for more than a single protein
-
 ## References
 
 - Graph Laplacian methods for protein structure analysis
