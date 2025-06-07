@@ -53,8 +53,8 @@ The pipeline takes advantage of graph theory and spectral analysis to:
 
 2. Install dependencies:
    ```bash
-pip install -r requirements.txt
-```
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
