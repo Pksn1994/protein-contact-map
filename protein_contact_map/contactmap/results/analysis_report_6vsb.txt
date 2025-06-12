@@ -1,0 +1,102 @@
+
+PROTEIN STRUCTURE ANALYSIS REPORT
+=================================
+
+PDB ID: 6VSB
+Analysis Date: 2025-06-12 18:10:01
+
+SUMMARY
+-------
+This analysis reconstructs protein 3D structure using graph Laplacian methods
+and evaluates the importance of individual contacts in maintaining structural integrity.
+
+STRUCTURE INFORMATION
+--------------------
+Number of residues: 2905
+Coordinate range:
+  X: 157.07 to 271.01 Å
+  Y: 166.22 to 284.18 Å  
+  Z: 136.00 to 302.36 Å
+
+CONTACT ANALYSIS (7Å threshold)
+------------------------------
+Total contacts: 11246
+Contact density: 0.002666
+Average degree: 7.74
+Degree range: 2 to 14
+
+EIGENVALUE ANALYSIS
+------------------
+Number of zero eigenvalues: 1
+Second smallest eigenvalue: 0.006133
+Largest eigenvalue: 15.587578
+Spectral gap: 0.006133
+
+RECONSTRUCTION QUALITY
+---------------------
+Overall RMSD: 44.950671 Å
+Scaling factor: 526.292497
+
+The reconstruction quality indicates moderate 
+agreement between original and reconstructed structures.
+
+LINK IMPORTANCE ANALYSIS
+-----------------------
+Links analyzed: 1000
+Successful reconstructions: 1000
+Failed reconstructions: 0
+
+RMSD change statistics:
+  Mean: -0.006141 Å
+  Std:  0.006358 Å
+  Max:  0.000045 Å
+
+TOP 10 MOST CRITICAL CONTACTS
+-----------------------------
+ 1. Residues   13-  14 (separation:   1): RMSD change = 0.000045 Å (+0.00%)
+ 2. Residues  157- 206 (separation:  49): RMSD change = 0.000032 Å (+0.00%)
+ 3. Residues  203-2377 (separation: 2174): RMSD change = 0.000032 Å (+0.00%)
+ 4. Residues  155- 207 (separation:  52): RMSD change = 0.000026 Å (+0.00%)
+ 5. Residues   46-  48 (separation:   2): RMSD change = 0.000022 Å (+0.00%)
+ 6. Residues  168- 170 (separation:   2): RMSD change = 0.000020 Å (+0.00%)
+ 7. Residues   47-  50 (separation:   3): RMSD change = 0.000019 Å (+0.00%)
+ 8. Residues   17- 200 (separation: 183): RMSD change = 0.000017 Å (+0.00%)
+ 9. Residues   47- 173 (separation: 126): RMSD change = 0.000016 Å (+0.00%)
+10. Residues  155- 208 (separation:  53): RMSD change = 0.000016 Å (+0.00%)
+
+
+INTERPRETATION
+--------------
+• Contacts with large RMSD changes upon removal are critical for structural integrity
+• Short-range contacts (small sequence separation) often show high importance
+• The analysis identifies key structural elements that maintain protein fold
+• Failed reconstructions indicate contacts essential for graph connectivity
+
+FILES GENERATED
+--------------
+• pdb_file: pdb6vsb.ent
+• coordinates: results/ca_coordinates_6vsb.csv
+• distance_matrix: results/distance_matrix_6vsb.csv
+• contact_matrix: results/contact_matrix_6vsb.csv
+• laplacian_matrix: results/laplacian_matrix_6vsb.csv
+• reconstructed_coords: results/reconstructed_coords_6vsb.csv
+• link_analysis: results/link_importance_6vsb.csv
+
+METHODOLOGY
+-----------
+This analysis follows the 9-step pipeline:
+1. Extract alpha-carbon coordinates from PDB
+2. Calculate pairwise distance matrix
+3. Create binary contact matrix (7Å threshold)
+4. Compute graph Laplacian matrix
+5. Calculate eigenvalues and eigenvectors
+6. Reconstruct coordinates using smallest non-zero eigenvectors
+7. Align reconstructed structure using Procrustes analysis
+8. Calculate RMSD between original and reconstructed structures
+9. Evaluate contact importance by systematic removal
+
+REFERENCES
+----------
+• Graph Laplacian methods for protein structure analysis
+• Procrustes analysis for structural alignment
+• Contact map analysis in structural biology
