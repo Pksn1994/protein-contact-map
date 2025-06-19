@@ -25,9 +25,6 @@ The pipeline takes advantage of graph theory and spectral analysis to:
 
 ### Requirements
 
-#### If you use windows just run start.ps1 
-#### If you use linux os just run start.sh
-
 - Python 3.7 or higher
 
 #### If you use windows just run start.ps1 
