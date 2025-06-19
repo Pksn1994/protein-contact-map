@@ -43,7 +43,8 @@ The pipeline takes advantage of graph theory and spectral analysis to:
   tqdm >= 4.50.0
   ```
 
-### Setup
+
+### Setup (failsafe manual method)
 
 1. Clone this repository:
    ```bash
